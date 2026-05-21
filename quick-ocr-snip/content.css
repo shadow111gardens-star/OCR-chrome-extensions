@@ -1,0 +1,97 @@
+/* Quick OCR Snip overlay. The styles are prefixed to avoid colliding with pages. */
+
+html.qos-snipping,
+html.qos-snipping * {
+  cursor: crosshair !important;
+  user-select: none !important;
+}
+
+.qos-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(5, 10, 20, 0.62);
+  cursor: crosshair;
+}
+
+.qos-overlay.qos-has-selection {
+  background: transparent;
+}
+
+.qos-overlay.qos-capturing {
+  visibility: hidden;
+}
+
+.qos-clear-area {
+  position: fixed;
+  box-sizing: border-box;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow:
+    0 0 0 99999px rgba(5, 10, 20, 0.62),
+    0 0 0 1px rgba(18, 149, 255, 0.9),
+    0 10px 36px rgba(0, 0, 0, 0.35);
+}
+
+.qos-size-label {
+  position: fixed;
+  min-width: 84px;
+  max-width: 220px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(18, 24, 38, 0.96);
+  color: #ffffff;
+  font: 600 12px/1.2 Arial, Helvetica, sans-serif;
+  text-align: center;
+  letter-spacing: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.qos-processing {
+  width: auto;
+  min-width: 132px;
+}
+
+.qos-toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2147483647;
+  max-width: min(340px, calc(100vw - 36px));
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #ffffff;
+  font: 700 14px/1.3 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.qos-toast-success {
+  background: #0c7a4b;
+}
+
+.qos-toast-error {
+  background: #b42318;
+}
+
+.qos-toast-hide {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.qos-ocr-frame {
+  position: fixed;
+  left: -10px;
+  top: -10px;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
